@@ -1,6 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import ColorCounter from "../components/ColorCounter";
 
 const TextScreen = () => {
   const [password, setPassword] = useState("");
