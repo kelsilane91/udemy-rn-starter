@@ -3,18 +3,24 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import ColorCounter from "../components/ColorCounter";
 
 const TextScreen = () => {
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <View style={styles.container}>
-      <Text>Enter Name:</Text>
+      <Text>Enter Password:</Text>
       <TextInput
         style={styles.textInput}
         autoCapitalize="none"
         autoCorrect={false}
-        value={name}
-        onChangeText={(newValue) => setName(newValue)}
+        value={password}
+        onChangeText={(newValue) => {
+          setPassword(newValue);
+        }}
       />
-      <Text>My name is {name}</Text>
+      {password.length <= 4 ? (
+        <Text style={styles.error}>
+          Password must be longer than 5 characters
+        </Text>
+      ) : null}
     </View>
   );
 };
@@ -26,7 +32,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     flex: 1,
   },
-  textInput: { borderWidth: 1, borderColor: "black", minWidth: "80%" },
+  error: { color: "red", fontWeight: "bold" },
+  textInput: {
+    borderWidth: 1,
+    borderColor: "black",
+    minWidth: "80%",
+    marginVertical: 16,
+  },
 });
 
 export default TextScreen;
